@@ -71,82 +71,50 @@ console.log(countAndSay(9));
 
 
 
-// You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
+// Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
 
-// Increment the large integer by one and return the resulting array of digits.
+// There is only one repeated number in nums, return this repeated number.
 
-// Example 1:
-
-// Input: digits = [1,2,3]
-// Output: [1,2,4]
-// Explanation: The array represents the integer 123.
-// Incrementing by one gives 123 + 1 = 124.
-// Thus, the result should be [1,2,4].
-// Example 2:
-
-// Input: digits = [4,3,2,1]
-// Output: [4,3,2,2]
-// Explanation: The array represents the integer 4321.
-// Incrementing by one gives 4321 + 1 = 4322.
-// Thus, the result should be [4,3,2,2].
-// Example 3:
-
-// Input: digits = [9]
-// Output: [1,0]
-// Explanation: The array represents the integer 9.
-// Incrementing by one gives 9 + 1 = 10.
-// Thus, the result should be [1,0].
-
-// /**
-//  * @param {number[]} digits
-//  * @return {number[]}
-//  */
-
-var plusOne = function (digits) {
-  let result = [];
-  let carry = 1;
-
-  for (let i = digits.length - 1; i >= 0; i--) {
-    let sum = digits[i] + carry;
-    carry = Math.floor(sum / 10);
-  
-    if (i === digits.length - 1){
-      // console.log(digits.length);
-      result.push(sum % 10);
-    } else {
-      result.push(sum % 10);
-    }
-  }
-
-  if (carry > 0) {
-    result.push(carry);
-  }
-
-  return result.reverse();
-};
-
-console.log(plusOne([9,9,9]));
-
-
-// Given two binary strings a and b, return their sum as a binary string.
+// You must solve the problem without modifying the array nums and uses only constant extra space.
 
  
 
 // Example 1:
 
-// Input: a = "11", b = "1"
-// Output: "100"
+// Input: nums = [1,3,4,2,2]
+// Output: 2
 // Example 2:
 
-// Input: a = "1010", b = "1011"
-// Output: "10101"
+// Input: nums = [3,1,3,4,2]
+// Output: 3
  
 
 // Constraints:
 
-// 1 <= a.length, b.length <= 104
-// a and b consist only of '0' or '1' characters.
-// Each string does not contain leading zeros except for the zero itself.
+// 1 <= n <= 105
+// nums.length == n + 1
+// 1 <= nums[i] <= n
+// All the integers in nums appear only once except for precisely one integer which appears two or more times.
+
+
+
+function findDuplicate(arr1) {
+  let result = [];
+  let seen = new Set();
+  for (let i = 0; i < arr1.length; i++) {
+    if (seen.has(arr1[i]) && !result.includes(arr1[i])) {
+      result.push(arr1[i]);
+    } else {
+      seen.add(arr1[i]);
+    }
+    
+  }
+  return result 
+}
+console.log(findDuplicate([1, 2, 3, 4, 5,5]))
+
+
+
 
 
 

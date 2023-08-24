@@ -114,8 +114,262 @@ function findDuplicate(arr1) {
 console.log(findDuplicate([1, 2, 3, 4, 5,5]))
 
 
+// Write a function expect that helps developers test their code. It should take in any value val and return an object with the following two functions.
+
+// toBe(val) accepts another value and returns true if the two values === each other. If they are not equal, it should throw an error "Not Equal".
+// notToBe(val) accepts another value and returns true if the two values !== each other. If they are equal, it should throw an error "Equal".
+
+// Example 1:
+
+// Input: func = () => expect(5).toBe(5)
+// Output: {"value": true}
+// Explanation: 5 === 5 so this expression returns true.
+// Example 2:
+
+// Input: func = () => expect(5).toBe(null)
+// Output: {"error": "Not Equal"}
+// Explanation: 5 !== null so this expression throw the error "Not Equal".
+// Example 3:
+
+// Input: func = () => expect(5).notToBe(null)
+// Output: {"value": true}
+// Explanation: 5 !== null so this expression returns true.
+/**
+ * @param {string} val
+ * @return {Object}
+ */
+
+var expect = function (val) {
+  return {
+    toBe: function (otherValue) {
+      if (val === otherValue) {
+        return ( true );
+      } else {
+          throw new Error ("Not Equal")
+      }
+    },
+
+    notToBe: function (otherValue) {
+      if (val !== otherValue) {
+        return ( true );
+      } else {
+        throw new Error ("Equal") 
+       
+      }
+    },
+  };
+};
+
+try {
+  console.log(expect(5).toBe(null));
+} catch (error) {
+  console.error(error.message);
+}
 
 
+// Write a function createHelloWorld. It should return a new function that always returns "Hello World".
+ 
+
+// Example 1:
+
+// Input: args = []
+// Output: "Hello World"
+// Explanation:
+// const f = createHelloWorld();
+// f(); // "Hello World"
+
+// The function returned by createHelloWorld should always return "Hello World".
+// Example 2:
+
+// Input: args = [{},null,42]
+// Output: "Hello World"
+// Explanation:
+// const f = createHelloWorld();
+// f({}, null, 42); // "Hello World"
+
+// Any arguments could be passed to the function but it should still always return "Hello World".
+
+const  createHelloWorld = function (...args){
+  return function() { 
+    return "Hello World"
+  }
+}
+console.log(createHelloWorld()())
+
+// Write a function argumentsLength that returns the count of arguments passed to it.
+ 
+
+// Example 1:
+
+// Input: argsArr = [5]
+// Output: 1
+// Explanation:
+// argumentsLength(5); // 1
+
+// One value was passed to the function so it should return 1.
+// Example 2:
+
+// Input: argsArr = [{}, null, "3"]
+// Output: 3
+// Explanation: 
+// argumentsLength({}, null, "3"); // 3
+
+// Three values were passed to the function so it should return 3.
+
+function argumentsLength(...argsArr) {
+  let count = 0;
+
+  for (let i = 0; i < argsArr.length; i++) {
+    if (argsArr[i] !== undefined) {
+      count++;
+    }
+  }
+
+  return count;
+}
+
+console.log(argumentsLength([5]));
+
+//BEST COMPLEXITY OF ABOVE CODE USIG THESE CODE DO THESE TYPE
+
+  
+function argumentsLength(...argsArr) {
+  return argsArr.filter(call => call !== undefined).length
+}
+
+console.log(argumentsLength([5]));
 
 
+// Given two promises promise1 and promise2, return a new promise. promise1 and promise2 will both resolve with a number. The returned promise should resolve with the sum of the two numbers.
+ 
+
+// Example 1:
+
+// Input: 
+// promise1 = new Promise(resolve => setTimeout(() => resolve(2), 20)), 
+// promise2 = new Promise(resolve => setTimeout(() => resolve(5), 60))
+// Output: 7
+// Explanation: The two input promises resolve with the values of 2 and 5 respectively. The returned promise should resolve with a value of 2 + 5 = 7. The time the returned promise resolves is not judged for this problem.
+// Example 2:
+
+// Input: 
+// promise1 = new Promise(resolve => setTimeout(() => resolve(10), 50)), 
+// promise2 = new Promise(resolve => setTimeout(() => resolve(-12), 30))
+// Output: -2
+// Explanation: The two input promises resolve with the values of 10 and -12 respectively. The returned promise should resolve with a value of 10 + -12 = -2.
+
+
+var addTwoPromises = async function (promise1, promise2) {
+  const value = await Promise.all([promise1, promise2])
+    const sum =  value[0] + value[1]
+	 return sum
+
+
+};
+
+async function krunal() {
+	promise1 = new Promise((res, rej) => {
+		setTimeout(() => {
+		  res(2);
+		}, 2000);
+	  });
+	  promise2 = new Promise((res, rej) => {
+		setTimeout(() => {
+		  res(2);
+		}, 2000);
+	  });
+const sum = await addTwoPromises(promise1, promise2);
+console.log(sum);
+}
+krunal()
+
+//good time complexity 
+const addTwoPromises = async function (promise1, promise2) {
+
+  return promise1.then((val1 => promise2.then( val2 =>  val1 + val2)))
+   
+
+ 
+
+
+};
+
+async function krunal() {
+ promise1 = new Promise((res, rej) => {
+   setTimeout(() => {
+     res(2);
+   }, 2000);
+   });
+   promise2 = new Promise((res, rej) => {
+   setTimeout(() => {
+     res(2);
+   }, 2000);
+   });
+const sum = await addTwoPromises(promise1, promise2);
+console.log(sum);
+}
+krunal()
+
+//good complexity these also
+
+
+const addTwoPromises = async function (promise1, promise2) {
+  const [res1, res2] = await Promise.all([promise1, promise2])
+    
+
+	 return res1 + res2
+
+
+};
+
+async function krunal() {
+	promise1 = new Promise((res, rej) => {
+		setTimeout(() => {
+		  res(2);
+		}, 2000);
+	  });
+	  promise2 = new Promise((res, rej) => {
+		setTimeout(() => {
+		  res(2);
+		}, 2000);
+	  });
+const sum = await addTwoPromises(promise1, promise2);
+console.log(sum);
+}
+krunal()
+
+
+// Given a function fn, an array of arguments args, and a timeout t in milliseconds, return a cancel function cancelFn.
+
+// After a delay of t, fn should be called with args passed as parameters unless cancelFn was invoked before the delay of t milliseconds elapses, specifically at cancelT ms. In that case, fn should never be called.
+
+ 
+
+// Example 1:
+
+// Input: fn = (x) => x * 5, args = [2], t = 20, cancelT = 50
+// Output: [{"time": 20, "returned": 10}]
+// Explanation: 
+// const cancel = cancellable((x) => x * 5, [2], 20); // fn(2) called at t=20ms
+// setTimeout(cancel, 50);
+
+// The cancellation was scheduled to occur after a delay of cancelT (50ms), which happened after the execution of fn(2) at 20ms.
+// Example 2:
+
+// Input: fn = (x) => x**2, args = [2], t = 100, cancelT = 50 
+// Output: []
+// Explanation: 
+// const cancel = cancellable((x) => x**2, [2], 100); // fn(2) not called
+// setTimeout(cancel, 50);
+
+// The cancellation was scheduled to occur after a delay of cancelT (50ms), which happened before the execution of fn(2) at 100ms, resulting in fn(2) never being called.
+// Example 3:
+
+// Input: fn = (x1, x2) => x1 * x2, args = [2,4], t = 30, cancelT = 100
+// Output: [{"time": 30, "returned": 8}]
+// Explanation:
+// const cancel = cancellable((x1, x2) => x1 * x2, [2,4], 30); // fn(2,4) called at t=30ms
+// setTimeout(cancel, 100);
+
+// The cancellation was scheduled to occur after a delay of cancelT (100ms), which happened after the execution of fn(2,4) at 30ms.
 

@@ -4,8 +4,6 @@
 
 Welcome to my LeetCode problem-solving repository! This repository contains my solutions to various LeetCode problems, implemented in JavaScript.
 
-
-
 ## About
 
 LeetCode is a popular platform for practicing coding skills through a variety of algorithmic and data structure problems. This repository serves as a collection of my solutions to these challenges.
@@ -28,8 +26,6 @@ Contributions are always welcome! If you've found a more efficient solution or w
    ```sh
    git checkout -b feature/your-feature
 
-
-Replace `your@email.com` with your actual email address. You can copy and paste this template into your repository's README.md file. Make sure to adjust any details or sections as needed to match your repository's structure and your preferences.
 
 If you have any questions or suggestions, feel free to contact me.
 

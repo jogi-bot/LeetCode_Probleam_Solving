@@ -15,14 +15,13 @@ var reverse = function (x) {
   const reverseNum =
     parseInt(x.toString().split("").reverse().join("")) * Math.sign(x);
 
-  if (reverseNum < Math.pow(-2, 31) || reverseNum > Math.pow(2, 31)-1) {
+  if (reverseNum < Math.pow(-2, 31) || reverseNum > Math.pow(2, 31) - 1) {
     return 0;
   }
 
   return reverseNum;
 };
 console.log(reverse(-123));
-
 
 // The count-and-say sequence is a sequence of digit strings defined by the recursive formula:
 
@@ -47,7 +46,6 @@ console.log(reverse(-123));
 // countAndSay(3) = say "11" = two 1's = "21"
 // countAndSay(4) = say "21" = one 2 + one 1 = "12" + "11" = "1211"
 
-
 function countAndSay(n) {
   if (n == 1) {
     return "1";
@@ -69,15 +67,11 @@ function countAndSay(n) {
 }
 console.log(countAndSay(9));
 
-
-
 // Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
 
 // There is only one repeated number in nums, return this repeated number.
 
 // You must solve the problem without modifying the array nums and uses only constant extra space.
-
- 
 
 // Example 1:
 
@@ -87,7 +81,6 @@ console.log(countAndSay(9));
 
 // Input: nums = [3,1,3,4,2]
 // Output: 3
- 
 
 // Constraints:
 
@@ -95,8 +88,6 @@ console.log(countAndSay(9));
 // nums.length == n + 1
 // 1 <= nums[i] <= n
 // All the integers in nums appear only once except for precisely one integer which appears two or more times.
-
-
 
 function findDuplicate(arr1) {
   let result = [];
@@ -107,12 +98,10 @@ function findDuplicate(arr1) {
     } else {
       seen.add(arr1[i]);
     }
-    
   }
-  return result 
+  return result;
 }
-console.log(findDuplicate([1, 2, 3, 4, 5,5]))
-
+console.log(findDuplicate([1, 2, 3, 4, 5, 5]));
 
 // Write a function expect that helps developers test their code. It should take in any value val and return an object with the following two functions.
 
@@ -143,18 +132,17 @@ var expect = function (val) {
   return {
     toBe: function (otherValue) {
       if (val === otherValue) {
-        return ( true );
+        return true;
       } else {
-          throw new Error ("Not Equal")
+        throw new Error("Not Equal");
       }
     },
 
     notToBe: function (otherValue) {
       if (val !== otherValue) {
-        return ( true );
+        return true;
       } else {
-        throw new Error ("Equal") 
-       
+        throw new Error("Equal");
       }
     },
   };
@@ -166,9 +154,7 @@ try {
   console.error(error.message);
 }
 
-
 // Write a function createHelloWorld. It should return a new function that always returns "Hello World".
- 
 
 // Example 1:
 
@@ -189,15 +175,14 @@ try {
 
 // Any arguments could be passed to the function but it should still always return "Hello World".
 
-const  createHelloWorld = function (...args){
-  return function() { 
-    return "Hello World"
-  }
-}
-console.log(createHelloWorld()())
+const createHelloWorld = function (...args) {
+  return function () {
+    return "Hello World";
+  };
+};
+console.log(createHelloWorld()());
 
 // Write a function argumentsLength that returns the count of arguments passed to it.
- 
 
 // Example 1:
 
@@ -211,7 +196,7 @@ console.log(createHelloWorld()())
 
 // Input: argsArr = [{}, null, "3"]
 // Output: 3
-// Explanation: 
+// Explanation:
 // argumentsLength({}, null, "3"); // 3
 
 // Three values were passed to the function so it should return 3.
@@ -232,118 +217,99 @@ console.log(argumentsLength([5]));
 
 //BEST COMPLEXITY OF ABOVE CODE USIG THESE CODE DO THESE TYPE
 
-  
 function argumentsLength(...argsArr) {
-  return argsArr.filter(call => call !== undefined).length
+  return argsArr.filter((call) => call !== undefined).length;
 }
 
 console.log(argumentsLength([5]));
 
-
 // Given two promises promise1 and promise2, return a new promise. promise1 and promise2 will both resolve with a number. The returned promise should resolve with the sum of the two numbers.
- 
 
 // Example 1:
 
-// Input: 
-// promise1 = new Promise(resolve => setTimeout(() => resolve(2), 20)), 
+// Input:
+// promise1 = new Promise(resolve => setTimeout(() => resolve(2), 20)),
 // promise2 = new Promise(resolve => setTimeout(() => resolve(5), 60))
 // Output: 7
 // Explanation: The two input promises resolve with the values of 2 and 5 respectively. The returned promise should resolve with a value of 2 + 5 = 7. The time the returned promise resolves is not judged for this problem.
 // Example 2:
 
-// Input: 
-// promise1 = new Promise(resolve => setTimeout(() => resolve(10), 50)), 
+// Input:
+// promise1 = new Promise(resolve => setTimeout(() => resolve(10), 50)),
 // promise2 = new Promise(resolve => setTimeout(() => resolve(-12), 30))
 // Output: -2
 // Explanation: The two input promises resolve with the values of 10 and -12 respectively. The returned promise should resolve with a value of 10 + -12 = -2.
 
-
 var addTwoPromises = async function (promise1, promise2) {
-  const value = await Promise.all([promise1, promise2])
-    const sum =  value[0] + value[1]
-	 return sum
-
-
+  const value = await Promise.all([promise1, promise2]);
+  const sum = value[0] + value[1];
+  return sum;
 };
 
 async function krunal() {
-	promise1 = new Promise((res, rej) => {
-		setTimeout(() => {
-		  res(2);
-		}, 2000);
-	  });
-	  promise2 = new Promise((res, rej) => {
-		setTimeout(() => {
-		  res(2);
-		}, 2000);
-	  });
-const sum = await addTwoPromises(promise1, promise2);
-console.log(sum);
+  promise1 = new Promise((res, rej) => {
+    setTimeout(() => {
+      res(2);
+    }, 2000);
+  });
+  promise2 = new Promise((res, rej) => {
+    setTimeout(() => {
+      res(2);
+    }, 2000);
+  });
+  const sum = await addTwoPromises(promise1, promise2);
+  console.log(sum);
 }
-krunal()
+krunal();
 
-//good time complexity 
+//good time complexity
 const addTwoPromises = async function (promise1, promise2) {
-
-  return promise1.then((val1 => promise2.then( val2 =>  val1 + val2)))
-   
-
- 
-
-
+  return promise1.then((val1) => promise2.then((val2) => val1 + val2));
 };
 
 async function krunal() {
- promise1 = new Promise((res, rej) => {
-   setTimeout(() => {
-     res(2);
-   }, 2000);
-   });
-   promise2 = new Promise((res, rej) => {
-   setTimeout(() => {
-     res(2);
-   }, 2000);
-   });
-const sum = await addTwoPromises(promise1, promise2);
-console.log(sum);
+  promise1 = new Promise((res, rej) => {
+    setTimeout(() => {
+      res(2);
+    }, 2000);
+  });
+  promise2 = new Promise((res, rej) => {
+    setTimeout(() => {
+      res(2);
+    }, 2000);
+  });
+  const sum = await addTwoPromises(promise1, promise2);
+  console.log(sum);
 }
-krunal()
+krunal();
 
 //good complexity these also
 
-
 const addTwoPromises = async function (promise1, promise2) {
-  const [res1, res2] = await Promise.all([promise1, promise2])
-    
+  const [res1, res2] = await Promise.all([promise1, promise2]);
 
-	 return res1 + res2
-
-
+  return res1 + res2;
 };
 
 async function krunal() {
-	promise1 = new Promise((res, rej) => {
-		setTimeout(() => {
-		  res(2);
-		}, 2000);
-	  });
-	  promise2 = new Promise((res, rej) => {
-		setTimeout(() => {
-		  res(2);
-		}, 2000);
-	  });
-const sum = await addTwoPromises(promise1, promise2);
-console.log(sum);
+  promise1 = new Promise((res, rej) => {
+    setTimeout(() => {
+      res(2);
+    }, 2000);
+  });
+  promise2 = new Promise((res, rej) => {
+    setTimeout(() => {
+      res(2);
+    }, 2000);
+  });
+  const sum = await addTwoPromises(promise1, promise2);
+  console.log(sum);
 }
-krunal()
-
+krunal();
 
 // Given a function fn, an array of arguments args, and a timeout t in milliseconds, return a cancel function cancelFn.
 
 // After a delay of t, fn should be called with args passed as parameters unless cancelFn was invoked before the delay of t milliseconds elapses, specifically at cancelT ms. In that case, fn should never be called.
-
- 
 
 // Example 1:
 
@@ -373,6 +339,51 @@ krunal()
 
 // The cancellation was scheduled to occur after a delay of cancelT (100ms), which happened after the execution of fn(2,4) at 30ms.
 
+const cancellable = function (fn, args, t) {
+  hasCancelled = false;
+
+  const hasNot = () => {
+    hasCancelled = true;
+  };
+
+  const executeFn = () => {
+    if (!hasCancelled) {
+      const result = fn(...args);
+      console.log([{ time: t, returned: result }]);
+    }
+  };
+
+  setTimeout(executeFn, t);
+
+  return hasNot;
+};
+
+const cancel1 = cancellable((x) => x * 5, [2], 20);
+
+setTimeout(cancel1, 50);
+
+//another type of uper code
+
+const cancellable = function (fn, args, t) {
+  hasCancelled = false;
+
+  setTimeout(() => {
+    if (!hasCancelled) {
+      const result = fn(...args);
+      console.log([{ time: t, returned: result }]);
+    }
+  }, t);
+
+  return () => {
+    hasCancelled = true;
+  };
+};
+
+const cancel1 = cancellable((x) => x * 5, [2], 20);
+
+setTimeout(cancel1, 50);
+
+//another type of uper code
 
 const cancellable = function (fn, args, t) {
   hasCancelled = false;
@@ -397,63 +408,9 @@ const cancel1 = cancellable((x) => x * 5, [2], 20);
 
 setTimeout(cancel1, 50);
 
-
-
-
-
-
-
-
-
-// const cancellable = function (fn, args, t) {
-//   hasCancelled = false;
-
-//   setTimeout(() => {
-//     if (!hasCancelled) {
-//       const result = fn(...args);
-//       console.log([{ time: t, returned: result }]);
-//     }
-//   }, t);
-
-//   return () => {
-//     hasCancelled = true;
-//   };
-// };
-
-// const cancel1 = cancellable((x) => x * 5, [2], 20);
-
-// setTimeout(cancel1, 50);
-
-// //another type of uper code
-
-// const cancellable = function (fn, args, t) {
-//   hasCancelled = false;
-
-//   const hasNot = () => {
-//     hasCancelled = true;
-//   };
-
-//   const executeFn = () => {
-//     if (!hasCancelled) {
-//       const result = fn(...args);
-//       console.log([{ time: t, returned: result }]);
-//     }
-//   };
-
-//   setTimeout(executeFn, t);
-
-//   return hasNot;
-// };
-
-// const cancel1 = cancellable((x) => x * 5, [2], 20);
-
-// setTimeout(cancel1, 50);
-
 // Given a function fn, an array of arguments args, and an interval time t, return a cancel function cancelFn.
 
 // The function fn should be called with args immediately and then called again every t milliseconds until cancelFn is called at cancelT ms.
-
- 
 
 // Example 1:
 
@@ -524,7 +481,6 @@ setTimeout(cancel1, 50);
 // 4th fn call is at 150ms
 // Cancelled at 180ms
 
-
 var cancellable = function (fn, args, t, cancelT) {
   let currentTime = 0;
   let intervalId;
@@ -554,7 +510,6 @@ const cancelT = 190;
 const cancel = cancellable((x) => x * 2, [4], 35);
 setTimeout(cancel, cancelT);
 
-
 //another code these type
 
 const cancellable = function (fn, args, t, cancelT) {
@@ -608,8 +563,200 @@ const cancelT = 190;
 const cancel = cancellable((x) => x * 2, [4], 35);
 setTimeout(cancel, cancelT);
 
+// Given an asynchronous function fn and a time t in milliseconds, return a new time limited version of the input function. fn takes arguments provided to the time limited function.
 
+// The time limited function should follow these rules:
+
+// If the fn completes within the time limit of t milliseconds, the time limited function should resolve with the result.
+// If the execution of the fn exceeds the time limit, the time limited function should reject with the string "Time Limit Exceeded".
+
+// Example 1:
+
+// Input:
+// fn = async (n) => {
+//   await new Promise(res => setTimeout(res, 100));
+//   return n * n;
+// }
+// inputs = [5]
+// t = 50
+// Output: {"rejected":"Time Limit Exceeded","time":50}
+// Explanation:
+// const limited = timeLimit(fn, t)
+// const start = performance.now()
+// let result;
+// try {
+//    const res = await limited(...inputs)
+//    result = {"resolved": res, "time": Math.floor(performance.now() - start)};
+// } catch (err) {
+//    result = {"rejected": err, "time": Math.floor(performance.now() - start)};
+// }
+// console.log(result) // Output
+
+// The provided function is set to resolve after 100ms. However, the time limit is set to 50ms. It rejects at t=50ms because the time limit was reached.
+// Example 2:
+
+// Input:
+// fn = async (n) => {
+//   await new Promise(res => setTimeout(res, 100));
+//   return n * n;
+// }
+// inputs = [5]
+// t = 150
+// Output: {"resolved":25,"time":100}
+// Explanation:
+// The function resolved 5 * 5 = 25 at t=100ms. The time limit is never reached.
+// Example 3:
+
+// Input:
+// fn = async (a, b) => {
+//   await new Promise(res => setTimeout(res, 120));
+//   return a + b;
+// }
+// inputs = [5,10]
+// t = 150
+// Output: {"resolved":15,"time":120}
+// Explanation:
+// ​​​​The function resolved 5 + 10 = 15 at t=120ms. The time limit is never reached.
+// Example 4:
+
+// Input:
+// fn = async () => {
+//   throw "Error";
+// }
+// inputs = []
+// t = 1000
+// Output: {"rejected":"Error","time":0}
+// Explanation:
+// The function immediately throws an error.
+
+const timeLimit = function (fn, t) {
+  return async function (...args) {
+    return new Promise(async (res, rej) => {
+      const Time = setTimeout(() => {
+        clearTimeout(Time);
+        rej("Time Limit Exceeded");
+      }, t);
+
+      
+      try {
+        const result = await fn(...args);
+        clearTimeout(Time);
+        res(result);
+      } catch (err) {
+        clearTimeout(Time);
+        rej(err);
+      }
+    });
+  };
+};
+
+const fn = async (n) => {
+  await new Promise((res) => setTimeout(res, 100));
+  return n * n;
+};
+
+const limited = timeLimit(fn, 50);
+const inputs = [5];
+
+limited(...inputs)
+  .then((result) => {
+    console.log({ resolved: result });
+  })
+  .catch((err) => {
+    console.log({ rejected: err });
+  });
+t = 51;
+
+
+// Write a class that allows getting and setting key-value pairs, however a time until expiration is associated with each key.
+
+// The class has three public methods:
+
+// set(key, value, duration): accepts an integer key, an integer value, and a duration in milliseconds. Once the duration has elapsed, the key should be inaccessible. The method should return true if the same un-expired key already exists and false otherwise. Both the value and duration should be overwritten if the key already exists.
+
+// get(key): if an un-expired key exists, it should return the associated value. Otherwise it should return -1.
+
+// count(): returns the count of un-expired keys.
+
+ 
+
+// Example 1:
+
+// Input:
+// ["TimeLimitedCache", "set", "get", "count", "get"]
+// [[], [1, 42, 100], [1], [], [1]]
+// [0, 0, 50, 50, 150]
+// Output: [null, false, 42, 1, -1]
+// Explanation:
+// At t=0, the cache is constructed.
+// At t=0, a key-value pair (1: 42) is added with a time limit of 100ms. The value doesn't exist so false is returned.
+// At t=50, key=1 is requested and the value of 42 is returned.
+// At t=50, count() is called and there is one active key in the cache.
+// At t=100, key=1 expires.
+// At t=150, get(1) is called but -1 is returned because the cache is empty.
+// Example 2:
+
+// Input:
+// ["TimeLimitedCache", "set", "set", "get", "get", "get", "count"]
+// [[], [1, 42, 50], [1, 50, 100], [1], [1], [1], []]
+// [0, 0, 40, 50, 120, 200, 250]
+// Output: [null, false, true, 50, 50, -1, 0]
+// Explanation:
+// At t=0, the cache is constructed.
+// At t=0, a key-value pair (1: 42) is added with a time limit of 50ms. The value doesn't exist so false is returned.
+// At t=40, a key-value pair (1: 50) is added with a time limit of 100ms. A non-expired value already existed so true is returned and the old value was overwritten.
+// At t=50, get(1) is called which returned 50.
+// At t=120, get(1) is called which returned 50.
+// At t=140, key=1 expires.
+// At t=200, get(1) is called but the cache is empty so -1 is returned.
+// At t=250, count() returns 0 because the cache is empty.
+
+//my code 
+var TimeLimitedCache = function () {
+  this.catch = {};
+  
+};
+
+TimeLimitedCache.prototype.set = function (key, value, duration) {
+  if (this.catch[key] && this.catch[key].expirationTime > Date.now()) {
+    this.catch[key].value = value;
+
+    this.catch[key].expirationTime = Date.now() + duration;
     
+    return true;
+  } else {
+    this.catch[key] = {
+      value: value,
+      expirationTime: Date.now() + duration,
+    };
+    return false;
+  }
+};
 
+TimeLimitedCache.prototype.get = function (key) {
+  if (this.catch[key] && this.catch[key].expirationTime > Date.now()) {
+    return this.catch[key].value;
+  } else {
+    return -1;
+  }
+};
+
+TimeLimitedCache.prototype.count = function () {
+  let currentTime = Date.now();
+  let count = 0;
+
+  for (key in this.catch) {
+    if (this.catch[key].expirationTime > currentTime) {
+      count++;
+    }
+  }
+  return count;
+};
+
+// Your TimeLimitedCache object will be instantiated and called as such:
+var obj = new TimeLimitedCache();
+console.log(obj.set(1, 42, 1000));
+console.log(obj.get(1));
+console.log(obj.count());
 
 

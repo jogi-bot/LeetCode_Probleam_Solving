@@ -637,7 +637,6 @@ const timeLimit = function (fn, t) {
         rej("Time Limit Exceeded");
       }, t);
 
-      
       try {
         const result = await fn(...args);
         clearTimeout(Time);
@@ -667,7 +666,6 @@ limited(...inputs)
   });
 t = 51;
 
-
 // Write a class that allows getting and setting key-value pairs, however a time until expiration is associated with each key.
 
 // The class has three public methods:
@@ -677,8 +675,6 @@ t = 51;
 // get(key): if an un-expired key exists, it should return the associated value. Otherwise it should return -1.
 
 // count(): returns the count of un-expired keys.
-
- 
 
 // Example 1:
 
@@ -711,10 +707,9 @@ t = 51;
 // At t=200, get(1) is called but the cache is empty so -1 is returned.
 // At t=250, count() returns 0 because the cache is empty.
 
-//my code 
+//my code
 var TimeLimitedCache = function () {
   this.catch = {};
-  
 };
 
 TimeLimitedCache.prototype.set = function (key, value, duration) {
@@ -722,7 +717,7 @@ TimeLimitedCache.prototype.set = function (key, value, duration) {
     this.catch[key].value = value;
 
     this.catch[key].expirationTime = Date.now() + duration;
-    
+
     return true;
   } else {
     this.catch[key] = {
@@ -758,7 +753,6 @@ var obj = new TimeLimitedCache();
 console.log(obj.set(1, 42, 1000));
 console.log(obj.get(1));
 console.log(obj.count());
-
 
 // Input:
 // t = 50
@@ -831,22 +825,20 @@ log("Hello");
 // When any of the promises returned from functions were rejected. promise should also reject with the reason of the first rejection.
 // Please solve it without using the built-in Promise.all function.
 
- 
-
 // Example 1:
 
 // Input: functions = [
 //   () => new Promise(resolve => setTimeout(() => resolve(5), 200))
 // ]
 // Output: {"t": 200, "resolved": [5]}
-// Explanation: 
+// Explanation:
 // promiseAll(functions).then(console.log); // [5]
 
 // The single function was resolved at 200ms with a value of 5.
 // Example 2:
 
 // Input: functions = [
-//     () => new Promise(resolve => setTimeout(() => resolve(1), 200)), 
+//     () => new Promise(resolve => setTimeout(() => resolve(1), 200)),
 //     () => new Promise((resolve, reject) => setTimeout(() => reject("Error"), 100))
 // ]
 // Output: {"t": 100, "rejected": "Error"}
@@ -854,13 +846,12 @@ log("Hello");
 // Example 3:
 
 // Input: functions = [
-//     () => new Promise(resolve => setTimeout(() => resolve(4), 50)), 
-//     () => new Promise(resolve => setTimeout(() => resolve(10), 150)), 
+//     () => new Promise(resolve => setTimeout(() => resolve(4), 50)),
+//     () => new Promise(resolve => setTimeout(() => resolve(10), 150)),
 //     () => new Promise(resolve => setTimeout(() => resolve(16), 100))
 // ]
 // Output: {"t": 150, "resolved": [4, 10, 16]}
 // Explanation: All the promises resolved with a value. The returned promise resolved when the last promise resolved.
- 
 
 // Constraints:
 
@@ -891,14 +882,11 @@ const promise = promiseAll([() => new Promise((res) => res(42))]);
 
 promise.then(console.log);
 
-
 // Given an object or an array, return if it is empty.
 
 // An empty object contains no key-value pairs.
 // An empty array contains no elements.
 // You may assume the object or array is the output of JSON.parse.
-
- 
 
 // Example 1:
 
@@ -915,7 +903,6 @@ promise.then(console.log);
 // Input: obj = [null, false, 0]
 // Output: false
 // Explanation: The array has 3 elements so it is not empty.
- 
 
 // Constraints:
 
@@ -941,23 +928,21 @@ console.log(isEmpty({ x: 5, y: 42 }));
 
 // Please solve it without lodash's _.groupBy function.
 
- 
-
 // Example 1:
 
-// Input: 
+// Input:
 // array = [
 //   {"id":"1"},
 //   {"id":"1"},
 //   {"id":"2"}
-// ], 
-// fn = function (item) { 
-//   return item.id; 
+// ],
+// fn = function (item) {
+//   return item.id;
 // }
-// Output: 
-// { 
-//   "1": [{"id": "1"}, {"id": "1"}],   
-//   "2": [{"id": "2"}] 
+// Output:
+// {
+//   "1": [{"id": "1"}, {"id": "1"}],
+//   "2": [{"id": "2"}]
 // }
 // Explanation:
 // Output is from array.groupBy(fn).
@@ -966,30 +951,30 @@ console.log(isEmpty({ x: 5, y: 42 }));
 // There is one object with an "id" of 2. That object is put in the second array.
 // Example 2:
 
-// Input: 
+// Input:
 // array = [
 //   [1, 2, 3],
 //   [1, 3, 5],
 //   [1, 5, 9]
 // ]
-// fn = function (list) { 
-//   return String(list[0]); 
+// fn = function (list) {
+//   return String(list[0]);
 // }
-// Output: 
-// { 
-//   "1": [[1, 2, 3], [1, 3, 5], [1, 5, 9]] 
+// Output:
+// {
+//   "1": [[1, 2, 3], [1, 3, 5], [1, 5, 9]]
 // }
 // Explanation:
-// The array can be of any type. In this case, the selector function defines the key as being the first element in the array. 
+// The array can be of any type. In this case, the selector function defines the key as being the first element in the array.
 // All the arrays have 1 as their first element so they are grouped together.
 // {
 //   "1": [[1, 2, 3], [1, 3, 5], [1, 5, 9]]
 // }
 // Example 3:
 
-// Input: 
+// Input:
 // array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-// fn = function (n) { 
+// fn = function (n) {
 //   return String(n > 5);
 // }
 // Output:
@@ -1026,7 +1011,6 @@ console.log(result);
 // sum accepts two integers a and b and returns a + b.
 // fib accepts a single integer n and returns 1 if n <= 1 or fib(n - 1) + fib(n - 2) otherwise.
 // factorial accepts a single integer n and returns 1 if n <= 1 or factorial(n - 1) * n otherwise.
- 
 
 // Example 1:
 
@@ -1072,10 +1056,10 @@ console.log(result);
 
 function memoize(fn) {
   let cache = {};
-  
+
   return function (...args) {
     const key = JSON.stringify(args);
-   
+
     if (key in cache) {
       return cache[key];
     } else {
@@ -1089,7 +1073,6 @@ const sum = (a, b) => a + b;
 const memoizedSum = memoize(sum);
 memoizedSum(2, 2);
 
-
 // Given two arrays arr1 and arr2, return a new array joinedArray. All the objects in each of the two inputs arrays will contain an id field that has an integer value. joinedArray is an array formed by merging arr1 and arr2 based on their id key. The length of joinedArray should be the length of unique values of id. The returned array should be sorted in ascending order based on the id key.
 
 // If a given id exists in one array but not the other, the single object with that id should be included in the result array without modification.
@@ -1098,7 +1081,6 @@ memoizedSum(2, 2);
 
 // If a key only exists in one object, that single key-value pair should be included in the object.
 // If a key is included in both objects, the value in the object from arr2 should override the value from arr1.
- 
 
 // Example 1:
 
@@ -1148,7 +1130,6 @@ memoizedSum(2, 2);
 //     {"id": 1, "b": {"c": 84}, "v": [1, 3], "y": 48}
 // ]
 // Explanation: The two objects with id=1 are merged together. For the keys "b" and "v" the values from arr2 are used. Since the key "y" only exists in arr1, that value is taken form arr1.
- 
 
 // Constraints:
 
@@ -1157,35 +1138,30 @@ memoizedSum(2, 2);
 // 2 <= JSON.stringify(arr1).length <= 106
 // 2 <= JSON.stringify(arr2).length <= 106
 
-
 var join = function (arr1, arr2) {
-    const idMap = {};
-   
+  const idMap = {};
 
   // Iterate over arr1 and arr2, merge objects based on id
-    [...arr1, ...arr2].forEach((obj) => {
-        const id = obj.id
-      
-        if (!idMap[id]) {
-             idMap[id] = {...obj}
-        } else {
-              
-            idMap[id] = { ...idMap[id] ,  ...obj }
-        }
+  [...arr1, ...arr2].forEach((obj) => {
+    const id = obj.id;
 
-        // const result = Object.values(idMap)
-        // console.log(result);
-    })
+    if (!idMap[id]) {
+      idMap[id] = { ...obj };
+    } else {
+      idMap[id] = { ...idMap[id], ...obj };
+    }
 
-    const result = Object.values(idMap);
-    
-    console.log(idMap);
-       
-     return result.sort((item1, item2) => {
-          item1.id - item2.id
-     })
-   
-  
+    // const result = Object.values(idMap)
+    // console.log(result);
+  });
+
+  const result = Object.values(idMap);
+
+  console.log(idMap);
+
+  return result.sort((item1, item2) => {
+    item1.id - item2.id;
+  });
 };
 
 const arr1 = [
@@ -1200,11 +1176,9 @@ const arr2 = [
 
 console.log(join(arr1, arr2));
 
+//another method to do these step:-2
 
-//another method to do these step:-2 
-
-
- var join = function (arr1, arr2) {
+var join = function (arr1, arr2) {
   const idMap = {};
 
   // Iterate over arr1 and arr2, merge objects based on id
@@ -1250,8 +1224,6 @@ console.log(join(arr1, arr2));
 
 // Please solve it without the built-in Array.flat method.
 
- 
-
 // Example 1:
 
 // Input
@@ -1261,7 +1233,7 @@ console.log(join(arr1, arr2));
 // [1, 2, 3, [4, 5, 6], [7, 8, [9, 10, 11], 12], [13, 14, 15]]
 
 // Explanation
-// Passing a depth of n=0 will always result in the original array. This is because the smallest possible depth of a subarray (0) is not less than n=0. Thus, no subarray should be flattened. 
+// Passing a depth of n=0 will always result in the original array. This is because the smallest possible depth of a subarray (0) is not less than n=0. Thus, no subarray should be flattened.
 // Example 2:
 
 // Input
@@ -1305,3 +1277,53 @@ var flat = function (arr, depth) {
 console.log(
   flat([1, 2, 3, [4, 5, 6], [7, 8, [9, 10, 11], 12], [13, 14, 15]], 2)
 );
+
+
+
+// Create a class ArrayWrapper that accepts an array of integers in its constructor. This class should have two features:
+
+// When two instances of this class are added together with the + operator, the resulting value is the sum of all the elements in both arrays.
+// When the String() function is called on the instance, it will return a comma separated string surrounded by brackets. For example, [1,2,3].
+ 
+
+// Example 1:
+
+// Input: nums = [[1,2],[3,4]], operation = "Add"
+// Output: 10
+// Explanation:
+// const obj1 = new ArrayWrapper([1,2]);
+// const obj2 = new ArrayWrapper([3,4]);
+// obj1 + obj2; // 10
+// Example 2:
+
+// Input: nums = [[23,98,42,70]], operation = "String"
+// Output: "[23,98,42,70]"
+// Explanation:
+// const obj = new ArrayWrapper([23,98,42,70]);
+// String(obj); // "[23,98,42,70]"
+// Example 3:
+
+// Input: nums = [[],[]], operation = "Add"
+// Output: 0
+// Explanation:
+// const obj1 = new ArrayWrapper([]);
+// const obj2 = new ArrayWrapper([]);
+// obj1 + obj2; // 0
+
+
+const ArrayWrapper = function (nums) {
+  this.nums = nums;
+};
+
+ArrayWrapper.prototype.valueOf = function () {
+  return this.nums.reduce((acc, num) => acc + num, 0);
+};
+
+ArrayWrapper.prototype.toString = function () {
+  return `[${String(this.nums)}]`;
+};
+
+const obj1 = new ArrayWrapper([[23, 98, 42, 70]]);
+const obj2 = new ArrayWrapper([3, 4]);
+
+console.log(obj1 + obj2);
